@@ -63,6 +63,9 @@ class XmlSettings implements ISettings
 	{
 		if(settingsXML.hasNode.appName)
 			parseAppName(settingsXML.node.appName, currentTarget);
+
+		if(settingsXML.hasNode.hasIcon)
+			parseHasIcon(settingsXML.node.hasIcon, currentTarget);
 		
 		if(settingsXML.hasNode.main)
 			parseMain(settingsXML.node.main, currentTarget);
@@ -99,6 +102,11 @@ class XmlSettings implements ISettings
 	private function parseAppName(buildDir:Fast, currentTarget:Target):Void
 	{
 		currentTarget.setSetting(Target.APP_NAME, buildDir.att.value);
+	}
+
+	private function parseHasIcon(node:Fast, currentTarget:Target):Void
+	{
+		currentTarget.setSetting(Target.HAS_ICON, node.att.value);
 	}
 	
 	private function parseIncludeSettings(nodeXML:Fast, currentTarget:Target):Void

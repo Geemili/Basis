@@ -5,6 +5,7 @@ class Target
 {
 	//Settings
 	static inline public var APP_NAME:String = "appName";
+	static inline public var HAS_ICON = "hasIcon";
 	static inline public var MAIN:String = "main";
 	static inline public var TYPE:String = "type";
 	static inline public var DEBUG:String = "debug";
@@ -93,6 +94,9 @@ class Target
 			
 		for(key in settings.keys())
 			Reflect.setField(obj, key, settings.get(key));
+
+		for(key in settingCollections.keys())
+			Reflect.setField(obj, key, settingCollections.get(key));
 		
 		if(parentTarget != null)
 			obj = parentTarget.getSettingsContext(obj);
